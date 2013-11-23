@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="debug" name="allJar">
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
+        <classpath>
+            <pathelement location="/home/lpxz/eclipse/workspace/soot24/lib/ant-contrib.jar"/>
+        </classpath>
+    </taskdef>
+	<loadproperties srcFile="properties"/>
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../"/>
+	<import file="path_def.xml" />
+
+	<target name ="debug">
+		<!--ant antfile="detect_pecan.xml"  target="detect_API_Openjms"   /-->
+		<!--ant antfile="detect_pecan.xml"  target="detect_API_Specjbb"   /-->
+		<!--antcall target = "Specjbb"/-->
+		<!--ant antfile="detect_pecan.xml"  target="detect_API_Simple"   /-->
+		<!--antcall target = "SimpleFixed"/-->
+		<!--antcall target = "Simple"/-->
+		<doittogether projectname="Openjms"/> <!--HashSet TreeSet ArrayList LinkedList-->
+	</target>
+
+	
+	
+
+	<macrodef name="doittogether">
+		    <attribute name="projectname"/>
+		    <sequential>
+		    	<transformit projectname="@{projectname}"/>
+		    			<detectit projectname="@{projectname}"/>
+		    </sequential>
+		</macrodef>
+	
+	
+	<target name="Simple">
+		<doittogether projectname="Simple"/>		
+	</target>
+	
+	<target name="SimpleFixed">
+		<doittogether projectname="SimpleFixed"/>
+	</target>
+
+
+	<target name="doit_API_all">	
+		<doittogether projectname="Avrora"/>
+		 <doittogether projectname="Bayes"/>
+		<doittogether projectname="Cache4j"/>
+		 <doittogether projectname="Derby"/>
+		 <doittogether projectname="Ftpserver"/>
+		 <doittogether projectname="Hedc"/>
+		 <doittogether projectname="Jigsaw"/>
+		<doittogether projectname="Jspider"/>
+		 <doittogether projectname="Laby"/>
+		 <doittogether projectname="Lucene"/>
+		<doittogether projectname="Mail"/>
+		<doittogether projectname="mtrt"/>
+		<doittogether projectname="Openjms"/>
+		<doittogether projectname="Raytracer"/>
+		 <doittogether projectname="Specjbb"/>
+		<doittogether projectname="Tomcat"/>
+			<doittogether projectname="Tuple"/>
+		 	<doittogether projectname="Vacation"/>
+		 <doittogether projectname="Weblech"/>
+	</target>
+	
+	<target name="Cache4j">
+		<ant antfile="transformer_pecan.xml" target="transform_API_Cache4j"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Cache4j"   />
+	</target>
+
+	<target name="Jspider">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Jspider"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Jspider"   />
+	</target>
+
+	<target name="Specjbb">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Specjbb"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Specjbb"   />
+	</target>
+
+
+	<target name="Weblech">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Weblech"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Weblech"   />
+	</target>
+
+
+	<target name="Raytracer">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Raytracer"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Raytracer"   />
+	</target>
+	<target name="Hedc">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Hedc"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Hedc"   />
+	</target>
+
+
+	<target name="Bayes">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Bayes"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Bayes"   />
+	</target>
+
+
+
+	<target name="Vacation">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Vacation"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Vacation"   />
+	</target>
+
+	<target name="Laby">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Laby"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Laby"   />
+	</target>
+
+	<target name="Mail">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Mail"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Mail"   />
+	</target>
+
+	<target name="Tuple">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Tuple"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Tuple"   />
+	</target>
+
+	<target name="Openjms">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Openjms"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Openjms"   />
+	</target>
+
+	<target name="Jigsaw">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Jigsaw"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Jigsaw"   />
+	</target>
+
+	<target name="Derby">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Derby"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Derby"   />
+	</target>
+
+	<target name="Tomcat">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Tomcat"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Tomcat"   />
+	</target>
+
+	<target name="Avrora">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Avrora"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Avrora"   />
+	</target>
+
+	<target name="Lucene">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Lucene"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Lucene"   />
+	</target>
+
+	<target name="Ftpserver">
+		<!--method synchronizer..-->
+		<ant antfile="transformer_pecan.xml" target="transform_API_Ftpserver"  />
+		<ant antfile="detect_pecan.xml"  target="detect_API_Ftpserver"   />
+	</target>
+
+
+
+	<macrodef name="transformit">
+		    <attribute name="projectname"/>
+		    <sequential>
+		    	<if>
+	    		<equals arg1="${UseJar}" arg2="true" />
+	    				<then>
+	    					<echo message="using pecan jars" />
+	    					<echo message="@{projectname}"/>
+					    	<java classname="edu.hkust.clap.Main" failonerror="true" fork="yes">
+					    				<arg line="@{projectname}"/>
+					    				<jvmarg line="-Xmx2g"/>
+					    				<syspropertyset>
+					    					<propertyref builtin="all"/>
+					    				</syspropertyset>
+					    				<classpath refid="pecan-transformer_jar.classpath"/>
+					    	</java>
+	    				</then>
+	    				<else>
+	    					<echo message="@{projectname}"/>
+	    						    	<java classname="edu.hkust.clap.Main" failonerror="true" fork="yes">
+	    						    				<arg line="@{projectname}"/>
+	    						    				<jvmarg line="-Xmx1g"/>
+	    						    				<syspropertyset>
+	    						    					<propertyref builtin="all"/>
+	    						    				</syspropertyset>
+	    						    				<classpath refid="pecan-transformer.classpath"/>
+	    						    	</java>
+	    					
+	    				</else>
+	    		</if>
+		    	
+		    	
+		    </sequential>
+		</macrodef>
+		
+		<target name="transform_API_Simple">		
+			<transformit projectname="Simple"/>
+		</target>
+		
+		<target name="transform_API_SimpleFixed">		
+			<transformit projectname="SimpleFixed"/>
+		</target>
+		
+		<target name="transform_API_all">	
+			<transformit projectname="Avrora"/>
+			 <transformit projectname="Bayes"/>
+			<transformit projectname="Cache4j"/>
+			 <transformit projectname="Derby"/>
+			 <transformit projectname="Ftpserver"/>
+			 <transformit projectname="Hedc"/>
+			 <transformit projectname="Jigsaw"/>
+			<transformit projectname="Jspider"/>
+			 <transformit projectname="Laby"/>
+			 <transformit projectname="Lucene"/>
+			<transformit projectname="Mail"/>
+			<transformit projectname="mtrt"/>
+			<transformit projectname="Openjms"/>
+			<transformit projectname="Raytracer"/>
+			 <transformit projectname="Specjbb"/>
+			<transformit projectname="Tomcat"/>
+				<transformit projectname="Tuple"/>
+			 	<transformit projectname="Vacation"/>
+			 <transformit projectname="Weblech"/>
+		</target>
+		
+    <target name="clean">
+        <!--delete dir="bin"/-->
+        <delete includeemptydirs="true">
+        	    <fileset dir="tmp" includes="**/trace*"/>
+        </delete>
+    </target>
+
+
+
+
+<target name="EngineMain2">
+    <java classname="edu.hkust.clap.engine.EngineMain2" failonerror="true" fork="yes">
+    	 <jvmarg line="-Xmx14g"/>            
+        <classpath refid="pecan-monitor.classpath"/>
+    	 <classpath refid="${projectname}.classpath"/>
+    </java>
+</target>
+
+
+
+<target name="monitor">
+	<echo message="load instrumented classes from folder: ${pecantrans.location}/tmp/runtime/${projectname}"/>
+    <java classname="edu.hkust.clap.Main" failonerror="true" fork="yes">
+    	 <jvmarg line="-noverify -Xmx14g"/>  
+    	 <sysproperty key="projectname" value="${projectname}"/>        
+    	<classpath>
+    	      <pathelement path="${pecanmonitor.location}/bin"/>  
+    		  <pathelement path="${pecantrans.location}/tmp/runtime/${projectname}"/>  
+            <path refid="pecan-monitor.classpath"/>
+            <path refid="${projectname}.classpath"/>
+    	 </classpath>   
+         <!--must before it, otherwise, the Monitor in monitoring project will not take effect-->
+    </java>
+</target>
+
+<target name="EngineMain">
+	
+    <java classname="edu.hkust.clap.engine.EngineMain" failonerror="true" fork="yes">
+        <jvmarg line="-Xmx14g"/>   
+    	 <sysproperty key="projectname" value="${projectname}"/>    
+    	
+        <classpath refid="pecan-monitor.classpath"/>
+    	 <classpath refid="${projectname}.classpath"/>
+    </java>
+</target>
+
+    	 	
+<macrodef name="detectit">
+    <attribute name="projectname"/>
+    <sequential>
+<if>
+    		<equals arg1="${UseJar}" arg2="true" />
+    				<then>
+    					<echo message="using pecan jars" />
+					<!--monitor-->
+		    		<echo message="load instrumented classes from folder: ${pecantrans.location}/tmp/runtime/@{projectname}"/>
+		    		        <java classname="edu.hkust.clap.Main" failonerror="true" fork="yes">
+	        	 	      <arg line="@{projectname}"/>    		        	
+			               <jvmarg line="-noverify -Xmx2g"/>  
+		    		        	<classpath>
+		    		        		 <path refid="pecan-monitor_jar_core.classpath"/> <!--pecanmonitor/bin-->
+		    		        		  <pathelement path="${pecantrans.location}/tmp/runtime/@{projectname}"/>  
+		    		                <path refid="pecan-monitor_jar_notcore.classpath"/>
+		    		                <path refid="@{projectname}.classpath"/>
+		    		        	 </classpath>   
+		    		             <!--must before it, otherwise, the Monitor in monitoring project will not take effect-->
+		    		        </java>
+		    		        	
+		    		  <!--engine main-->
+		    		  	 <java classname="edu.hkust.clap.engine.EngineMain" failonerror="true" fork="yes">
+		    		  	 	<arg line="@{projectname}"/>      		  	           
+							<jvmarg line="-Xmx2g"/>	    		  	        	    		  	        	
+		    		  	            <classpath refid="pecan-monitor_jar.classpath"/>
+		    		  	        	 <classpath refid="@{projectname}.classpath"/>
+		    		  	        </java>
+		    		  	
+		    		  	            	
+		    		  <!--clean-->	            	
+		    		  	<antcall target="clean"/>	    					
+    					
+    					
+    				</then>
+    				<else>
+    					<!--monitor-->
+			    		<echo message="load instrumented classes from folder: ${pecantrans.location}/tmp/runtime/@{projectname}"/>
+			    		        <java classname="edu.hkust.clap.Main" failonerror="true" fork="yes">
+		        	 	      <arg line="@{projectname}"/>    		        	
+				               <jvmarg line="-noverify -Xmx2g"/>  
+			    		        	<classpath>
+			    		        	      <pathelement path="${pecanmonitor.location}/bin"/>  
+			    		        		  <pathelement path="${pecantrans.location}/tmp/runtime/@{projectname}"/>  
+			    		                <path refid="pecan-monitor.classpath"/>
+			    		                <path refid="@{projectname}.classpath"/>
+			    		        	 </classpath>   
+			    		             <!--must before it, otherwise, the Monitor in monitoring project will not take effect-->
+			    		        </java>
+			    		        	
+    					  <!--engine main-->
+    								    		  	 <java classname="edu.hkust.clap.engine.EngineMain" failonerror="true" fork="yes">
+    								    		  	 	<arg line="@{projectname}"/>      		  	           
+    													<jvmarg line="-Xmx2g"/>	    		  	        	    		  	        	
+    								    		  	            <classpath refid="pecan-monitor.classpath"/>
+    								    		  	        	 <classpath refid="@{projectname}.classpath"/>
+    								    		  	        </java>
+			    		  	
+			    		  	            	
+			    		  <!--clean-->	            	
+			    		  	<antcall target="clean"/>		    					
+    					
+    				</else>
+    		</if>
+    	
+    	 	
+    		  	
+    </sequential>
+</macrodef>
+
+<target name ="detect_API_Simple">		
+	 	<detectit projectname="Simple"/>
+</target>
+
+<target name ="detect_API_SimpleFixed">		
+		 	<detectit projectname="SimpleFixed"/>
+</target>
+
+<target name ="detect_API_all">		
+	<detectit projectname="Avrora"/>
+		 <detectit projectname="Bayes"/>
+		<detectit projectname="Cache4j"/>
+		 <detectit projectname="Derby"/>
+		 <detectit projectname="Ftpserver"/>
+		 <detectit projectname="Hedc"/>
+		 <detectit projectname="Jigsaw"/>
+		<detectit projectname="Jspider"/>
+		 <detectit projectname="Laby"/>
+		 <detectit projectname="Lucene"/>
+		<detectit projectname="Mail"/>
+		<detectit projectname="mtrt"/>
+		<detectit projectname="Openjms"/>
+		<detectit projectname="Raytracer"/>
+		 <detectit projectname="Specjbb"/>
+		<detectit projectname="Tomcat"/>
+			<detectit projectname="Tuple"/>
+		 	<detectit projectname="Vacation"/>
+		 <detectit projectname="Weblech"/>
+</target>
+
+
+</project>

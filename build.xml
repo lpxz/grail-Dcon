@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="Dcon">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../"/>
+    <property name="log4j.location" value="../calfuzzer2/java_bench/log4j"/>
+    <property name="soot24.location" value="../soot24"/>
+    <property name="openjms.location" value="../openjms"/>
+    <property name="pecan-monitor.location" value="../pecan/pecan-monitor"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.junit_4.8.1.v4_8_1_v20100427-1100/junit.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
+    </path>
+    <path id="log4j.classpath">
+        <pathelement location="${log4j.location}/bin"/>
+        <pathelement location="${log4j.location}/lib/jms.jar"/>
+        <pathelement location="${log4j.location}/lib/mail.jar"/>
+        <pathelement location="${log4j.location}/lib/oro-2.0.8.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <path id="soot24.classpath">
+        <pathelement location="${soot24.location}/classes"/>
+        <pathelement location="${soot24.location}/lib/jasminclasses-2.3.0.jar"/>
+        <pathelement location="${soot24.location}/lib/jedd-runtime.jar"/>
+        <pathelement location="${soot24.location}/lib/jedd-translator.jar"/>
+        <pathelement location="${soot24.location}/lib/polyglot-1.3.3.jar"/>
+        <pathelement location="${soot24.location}/lib/svnant.jar"/>
+        <pathelement location="${soot24.location}/lib/svnClientAdapter.jar"/>
+        <pathelement location="${soot24.location}/lib/TGGraphLayout.jar"/>
+        <pathelement location="${soot24.location}/lib/xmlunit1.0.jar"/>
+        <pathelement location="${soot24.location}/lib/log4j.jar"/>
+        <pathelement location="${soot24.location}/lib/trove.jar"/>
+        <pathelement location="${soot24.location}/lib/jboss-serialization.jar"/>
+        <pathelement location="${soot24.location}/lib/jboss-common-4.0.2.jar"/>
+        <pathelement location="${soot24.location}/lib/junit-4.4.jar"/>
+        <pathelement location="${soot24.location}/javabdd_lib/javabdd_0.6.jar"/>
+        <pathelement location="${soot24.location}/lib/ant-antlr.jar"/>
+        <pathelement location="${soot24.location}/lib/ant-apache-bcel.jar"/>
+        <pathelement location="${soot24.location}/lib/ant-testutil.jar"/>
+        <pathelement location="${soot24.location}/lib/ant.jar"/>
+        <pathelement location="${soot24.location}/lib/coffer.jar"/>
+        <pathelement location="${soot24.location}/lib/java_cup.jar"/>
+        <pathelement location="${soot24.location}/lib/JFlex.jar"/>
+        <pathelement location="${soot24.location}/lib/junit-4.8.1.jar"/>
+        <pathelement location="${soot24.location}/lib/pao.jar"/>
+        <pathelement location="${soot24.location}/lib/polyglot.jar"/>
+        <pathelement location="${soot24.location}/lib/pth.jar"/>
+        <pathelement location="${soot24.location}/lib/xercesImpl.jar"/>
+        <pathelement location="${soot24.location}/lib/xml-apis.jar"/>
+        <pathelement location="${soot24.location}/lib/ant-contrib.jar"/>
+        <pathelement location="${soot24.location}/javabdd_lib/sablejbdd_real.jar"/>
+        <pathelement location="${soot24.location}/lib/pia.jar"/>
+        <pathelement location="${soot24.location}/lib/poa.jar"/>
+        <path refid="log4j.classpath"/>
+    </path>
+    <path id="openjms.classpath">
+        <pathelement location="${openjms.location}/bin"/>
+        <pathelement location="${openjms.location}/lib/jms-1.1.jar"/>
+        <pathelement location="${openjms.location}/lib/commons-codec-1.3.jar"/>
+        <pathelement location="${openjms.location}/lib/servlet.jar"/>
+        <pathelement location="${openjms.location}/lib/derby-10.1.1.0.jar"/>
+        <pathelement location="${openjms.location}/lib/castor-0.9.5.jar"/>
+        <pathelement location="${openjms.location}/lib/spice-jndikit-1.2.jar"/>
+        <pathelement location="${openjms.location}/lib/antlr-2.7.6.jar"/>
+        <pathelement location="${openjms.location}/lib/oro-2.0.8.jar"/>
+        <pathelement location="${openjms.location}/lib/commons-dbcp-1.2.1.jar"/>
+        <pathelement location="${openjms.location}/lib/xml-apis-1.0.b2.jar"/>
+        <pathelement location="${openjms.location}/lib/xerces-2.4.0.jar"/>
+        <pathelement location="${openjms.location}/lib/commons-pool-1.2.jar"/>
+        <pathelement location="${openjms.location}/lib/commons-collections-2.1.jar"/>
+        <pathelement location="${openjms.location}/lib/commons-logging-1.0.4.jar"/>
+        <path refid="log4j.classpath"/>
+        <path refid="soot24.classpath"/>
+    </path>
+    <path id="pecan-monitor.classpath">
+        <pathelement location="${pecan-monitor.location}/bin"/>
+        <pathelement location="${pecan-monitor.location}/lib/xstream-1.3.1.jar"/>
+        <pathelement location="${pecan-monitor.location}/lib/xpp3_min-1.1.3.4.O.jar"/>
+        <pathelement location="${pecan-monitor.location}/lib/antlrworks-1.4.3.jar"/>
+        <pathelement location="${pecan-monitor.location}/lib/args4j-2.0.10.jar"/>
+        <pathelement location="${pecan-monitor.location}/lib/commons-io-1.4.jar"/>
+        <pathelement location="${pecan-monitor.location}/lib/deuceAgent.jar"/>
+        <pathelement location="${pecan-monitor.location}/lib/jgraph.jar"/>
+        <pathelement location="${pecan-monitor.location}/lib/jsr308-checkers-0.3.jar"/>
+        <pathelement location="${pecan-monitor.location}/lib/junit-4.3.1.jar"/>
+        <pathelement location="${pecan-monitor.location}/lib/l2fprod-common-all.jar"/>
+        <pathelement location="${pecan-monitor.location}/lib/lpsolve55j.jar"/>
+        <pathelement location="${pecan-monitor.location}/lib/javailp.jar"/>
+        <pathelement location="${pecan-monitor.location}/lib/JavaPlot.jar"/>
+        <pathelement location="${pecan-monitor.location}/../pecan-transformer/tmp/runtime"/>
+        <pathelement location="${pecan-monitor.location}/lib/tools.jar"/>
+        <pathelement location="${pecan-monitor.location}/lib/asm-3.3.1.jar"/>
+        <pathelement location="${pecan-monitor.location}/lib/asm-commons-3.3.1.jar"/>
+        <pathelement location="${pecan-monitor.location}/lib/castor-0.9.5.jar"/>
+        <path refid="soot24.classpath"/>
+        <path refid="openjms.classpath"/>
+    </path>
+    <path id="Dcon.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="lib/antlrworks-1.4.3.jar"/>
+        <pathelement location="lib/args4j-2.0.10.jar"/>
+        <pathelement location="lib/commons-io-1.4.jar"/>
+        <pathelement location="lib/deuceAgent.jar"/>
+        <pathelement location="lib/javailp.jar"/>
+        <pathelement location="lib/jgraph.jar"/>
+        <pathelement location="lib/jsr308-checkers-0.3.jar"/>
+        <pathelement location="lib/junit-4.3.1.jar"/>
+        <pathelement location="lib/l2fprod-common-all.jar"/>
+        <pathelement location="lib/xpp3_min-1.1.3.4.O.jar"/>
+        <pathelement location="lib/xstream-1.3.1.jar"/>
+        <pathelement location="lib/jgnuplot-0.3.jar"/>
+        <pathelement location="lib/ant-contrib.jar"/>
+        <pathelement location="lib/lpsolve55j.jar"/>
+        <path refid="pecan-monitor.classpath"/>
+        <path refid="soot24.classpath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+                <exclude name="AVfix/icse/fixing/Domain.java"/>
+                <exclude name="AVfix/locking/AfixInfoInAMethod.java"/>
+                <exclude name="AVfix/locking/CopyOfXedgesLocker.java"/>
+                <exclude name="AVfix/locking/CopyXedgesLocker.java"/>
+                <exclude name="AVfix/locking/OldXedgesLocker.java"/>
+                <exclude name="AVfix/node/abstractclass/ConcretePlace.java"/>
+                <exclude name="AVfix/node/abstractclass/SuperficialPlace.java"/>
+                <exclude name="edu/hkust/clap/organize/CSMethodPair.java"/>
+                <exclude name="edu/hkust/clap/organize/OrganizeResults.java"/>
+                <exclude name="edu/hkust/clap/organize/SaveLoad.java"/>
+                <exclude name="edu/hkust/clap/organize/SootAgent4Engine2.java"/>
+                <exclude name="edu/hkust/clap/organize/SootAgent4Fixing.java"/>
+                <exclude name="popl/petrinet/element/"/>
+                <exclude name="popl/petrinet/element/EntryPlace.java"/>
+                <exclude name="popl/petrinet/element/ExitPlace.java"/>
+                <exclude name="popl/petrinet/element/Node.java"/>
+                <exclude name="popl/petrinet/element/Place.java"/>
+                <exclude name="popl/petrinet/element/Transition.java"/>
+                <exclude name="popl/petrinet/ops/"/>
+                <exclude name="popl/petrinet/ops/PetriNet.java"/>
+                <exclude name="popl/petrinet/ops/PetriNetGen.java"/>
+                <exclude name="popl/petrinet/ops/PetriNetTraversal.java"/>
+                <exclude name="popl/petrinet/ops/Petrify.java"/>
+                <exclude name="AVfix/icse/fixing/ICSEJinFixing.java"/>
+                <exclude name="AVfix/icse/fixing/ICSENaiveSIngleLocks.java"/>
+                <exclude name="AVfix/icse/fixing/ICSEOriginal.java"/>
+                <exclude name="AVfix/icse/fixing/ICSEPengFixing.java"/>
+                <exclude name="AVfix/icse/fixing/Properties.java"/>
+                <exclude name="hk/ust/lpxz/settings/"/>
+                <exclude name="AVfix/icse/fixing/peng/ICSEJinFixing.java"/>
+                <exclude name="timeNconsole/"/>
+                <exclude name="hk/ust/lpxz/petri/graph/GadaraSupport/parser/"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall">
+        <ant antfile="build.xml" dir="${log4j.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${soot24.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${openjms.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${pecan-monitor.location}" inheritAll="false" target="clean"/>
+    </target>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects">
+       
+        <ant antfile="build.xml" dir="${soot24.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${openjms.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+        <ant antfile="build.xml" dir="${pecan-monitor.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+            <src path="src"/>
+            <exclude name="AVfix/icse/fixing/Domain.java"/>
+            <exclude name="AVfix/locking/AfixInfoInAMethod.java"/>
+            <exclude name="AVfix/locking/CopyOfXedgesLocker.java"/>
+            <exclude name="AVfix/locking/CopyXedgesLocker.java"/>
+            <exclude name="AVfix/locking/OldXedgesLocker.java"/>
+            <exclude name="AVfix/node/abstractclass/ConcretePlace.java"/>
+            <exclude name="AVfix/node/abstractclass/SuperficialPlace.java"/>
+            <exclude name="edu/hkust/clap/organize/CSMethodPair.java"/>
+            <exclude name="edu/hkust/clap/organize/OrganizeResults.java"/>
+            <exclude name="edu/hkust/clap/organize/SaveLoad.java"/>
+            <exclude name="edu/hkust/clap/organize/SootAgent4Engine2.java"/>
+            <exclude name="edu/hkust/clap/organize/SootAgent4Fixing.java"/>
+            <exclude name="popl/petrinet/element/"/>
+            <exclude name="popl/petrinet/element/EntryPlace.java"/>
+            <exclude name="popl/petrinet/element/ExitPlace.java"/>
+            <exclude name="popl/petrinet/element/Node.java"/>
+            <exclude name="popl/petrinet/element/Place.java"/>
+            <exclude name="popl/petrinet/element/Transition.java"/>
+            <exclude name="popl/petrinet/ops/"/>
+            <exclude name="popl/petrinet/ops/PetriNet.java"/>
+            <exclude name="popl/petrinet/ops/PetriNetGen.java"/>
+            <exclude name="popl/petrinet/ops/PetriNetTraversal.java"/>
+            <exclude name="popl/petrinet/ops/Petrify.java"/>
+            <exclude name="AVfix/icse/fixing/ICSEJinFixing.java"/>
+            <exclude name="AVfix/icse/fixing/ICSENaiveSIngleLocks.java"/>
+            <exclude name="AVfix/icse/fixing/ICSEOriginal.java"/>
+            <exclude name="AVfix/icse/fixing/ICSEPengFixing.java"/>
+            <exclude name="AVfix/icse/fixing/Properties.java"/>
+            <exclude name="hk/ust/lpxz/settings/"/>
+            <exclude name="AVfix/icse/fixing/peng/ICSEJinFixing.java"/>
+            <exclude name="timeNconsole/"/>
+            <exclude name="hk/ust/lpxz/petri/graph/GadaraSupport/parser/"/>
+            <classpath refid="Dcon.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="FilterOut">
+        <java classname="AVfix.icse.fixing.peng.FilterOut" failonerror="true" fork="yes">
+            <classpath refid="Dcon.classpath"/>
+        </java>
+    </target>
+    <target name="DconPropertyManager">
+        <java classname="properties.DconPropertyManager" failonerror="true" fork="yes">
+            <classpath refid="Dcon.classpath"/>
+        </java>
+    </target>
+    <target name="PatcherOnPN">
+        <java classname="AVfix.icse.fixing.peng.PatcherOnPN" failonerror="true" fork="yes">
+            <classpath refid="Dcon.classpath"/>
+        </java>
+    </target>
+    <target name="NUWAPatcherOnPN">
+        <java classname="AVfix.icse.fixing.peng.NUWAPatcherOnPN" failonerror="true" fork="yes">
+            <classpath refid="Dcon.classpath"/>
+        </java>
+    </target>
+</project>

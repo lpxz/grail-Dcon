@@ -1,0 +1,24 @@
+It is very easy to use:
+1) import your application as a project to eclipse
+2) fill in the information about your application in the path_def.xml and property.
+For example, given a project named "MergedSort"
+in path_def.xml, you need to add the classpath (essentially the same as the classpath used in the project building) for the project: 
+<path id="MergeSort.classpath">
+		<pathelement location="/home/lpxz/eclipse/workspace/MergeSort/bin"/>
+</path>
+in property, you need to add:
+MergeSort_pretrans_arg=-f c -pp -cp /home/lpxz/eclipse/workspace/MergeSort/bin -process-dir /home/lpxz/eclipse/workspace/MergeSort/bin
+MergeSort_trans_classpath=/home/lpxz/eclipse/workspace/MergeSort/bin
+MergeSort_trans_mainClass=mergesort.MergeSort
+MergeSort_trans_excludelist=
+MergeSort_trans_includelist=
+MergeSort_trans_outputform=c
+MergeSort_monitor_mainClassArg=mergesort.MergeSort
+Most time, you can copy the above and replace the project bin and the mainclass with your own project bin folder and your own mainclass.
+Occasionally, you need to include the jars being dependent on by the project. See the rich examples provided in our property file please.
+
+3) go to the execution files: detect.xml fix.xml benchmark.xml, add the execution command to the "debug" task.
+We already provide the macro for you to use.
+in detect.xml, which is used to detect bugs, just add : <doittogether projectname="MergeSort"/>
+in fix.xml, which is used to produce the fixes, just add: 
+

@@ -1,0 +1,68 @@
+=========controller0====
+it contains 30.0 tokens initially
+gives 10.0 tokens to T between entermonitor $r4 and <Test: int queue> = 10
+takes 10.0 tokens from T between <Test: int last> = 13 and exitmonitor r2
+gives 30.0 tokens to T between entermonitor $r1 and staticinvoke <Test: void setValue()>()
+takes 30.0 tokens from T between staticinvoke <Test: void postChange()>() and exitmonitor r2
+==========================
+
+Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF8
+Test_loopfy
+load bugs from /home/lpxz/eclipse/workspacegrail/pecan/pecan-monitor/tmp/CSMethodPairListTest_loopfy
+load CSPairs from /home/lpxz/eclipse/workspacegrail/pecan/pecan-monitor/tmp/CSMethodPairListTest_loopfy
+-w -app -p jb use-original-names:false -p cg.spark enabled:true -pp -cp .:/home/lpxz/pool/jdk1.6.0_13/jre/lib/jsse.jar:/home/lpxz/eclipse/workspacegrail/Test_loopfy/bin -main-class Test Test -d /home/lpxz/eclipse/workspacegrail/Dcon/output/Test_loopfy/outputClasses -x org.apache.log4j. -x jrockit. -x java. -x javax. -x xjava. -x COM. -x com. -x cryptix. -x sun. -x sunw. -x junit. -x org.junit. -x org.xmlpull. -x edu.hkust.clap. -x org.apache.commons.logging. -x org.apache.xalan. -x org.apache.xpath. -x org.springframework. -x org.jboss. -x jrockit. -x edu. -x checkers. -x org.codehaus.spice.jndikit. -x EDU.oswego.cs.dl.util.concurrent.WaiterPreferenceSemaphore -x soot. -x aTSE. -x pldi. -x popl. -x beaver. -x org.jgrapht -x ca.pfv.spmf. -x japa.parser. -x polyglot. -x jasmin. -x Jama. -x jas. -x java_cup.
+Warning: Phase wjtp.tnlp is not a standard Soot phase listed in XML files.
+I am 2.4 vertsion
+[Call Graph] For information on where the call graph may be incomplete, use the verbose option to the cg phase.
+[Spark] Pointer Assignment Graph in 1.8 seconds.
+[Spark] Type masks in 1.5 seconds.
+[Spark] Pointer Graph simplified in 0.0 seconds.
+[Spark] Propagation in 25.7 seconds.
+[Spark] Solution found in 25.7 seconds.
+we fix #bugs: 3
+The 0th AV bug
+The 1th AV bug
+The 2th AV bug
+size : 29
+size 2 : 15
+ containing methods  2
+
+Petri methods  2
+
+Petri places  15
+
+Petri transitions  11
+
+lock places 2
+
+arcs from resource 2
+
+arcs to resource 2
+
+Allowed:  6
+
+Forbidden  6
+
+spyros version
+vars  12
+
+inequalities 199
+
+L:
+
+ 30.00 30.00 10.00 10.00 10.00
+
+
+B:
+
+ 30.00
+
+Dc is: 
+
+ -10.00 -0.00 -0.00 10.00 -30.00 -0.00 30.00
+
+MIP  -1
+
+write the object to :/home/lpxz/eclipse/workspacegrail/Dcon/output/Test_loopfy/lockID2Tokens
+output classes to: /home/lpxz/eclipse/workspacegrail/Dcon/output/Test_loopfy/outputClasses
+

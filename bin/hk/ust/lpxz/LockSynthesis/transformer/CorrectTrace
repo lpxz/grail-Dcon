@@ -1,0 +1,56 @@
+Warning: Phase wjtp.tnlp is not a standard Soot phase listed in XML files.
+I am 2.4 vertsion
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] r0;
+        byte b0, b1;
+        int $i2, i3, i4;
+
+        r0 := @parameter0: java.lang.String[];
+        b0 = 3;
+        b1 = 9;
+        $i2 = b0 * b0;
+        if $i2 > b1 goto label0;
+
+        i3 = b0 + 1;
+        goto label1;
+
+     label0:
+        i4 = b1 + 1;
+
+     label1:
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] r0;
+        byte b0, b1;
+        int $i2, i3, i4;
+
+        r0 := @parameter0: java.lang.String[];
+        staticinvoke <hk.ust.lpxz.transformer.Chocalate: void countEdges(java.lang.String,java.lang.String)>("r0 := @parameter0: java.lang.String[]", "b0 = 3");
+        b0 = 3;
+        staticinvoke <hk.ust.lpxz.transformer.Chocalate: void countEdges(java.lang.String,java.lang.String)>("b0 = 3", "b1 = 9");
+        b1 = 9;
+        staticinvoke <hk.ust.lpxz.transformer.Chocalate: void countEdges(java.lang.String,java.lang.String)>("b1 = 9", "$i2 = b0 * b0");
+        $i2 = b0 * b0;
+        staticinvoke <hk.ust.lpxz.transformer.Chocalate: void countEdges(java.lang.String,java.lang.String)>("$i2 = b0 * b0", "if $i2 > b1 goto i4 = b1 + 1");
+        if $i2 > b1 goto label0;
+
+        staticinvoke <hk.ust.lpxz.transformer.Chocalate: void countEdges(java.lang.String,java.lang.String)>("if $i2 > b1 goto staticinvoke <hk.ust.lpxz.transformer.Chocalate: void countEdges(java.lang.String,java.lang.String)>(\"if $i2 > b1 goto i4 = b1 + 1\", \"i4 = b1 + 1\")", "i3 = b0 + 1");
+        i3 = b0 + 1;
+        staticinvoke <hk.ust.lpxz.transformer.Chocalate: void countEdges(java.lang.String,java.lang.String)>("i3 = b0 + 1", "goto [?= return]");
+        staticinvoke <hk.ust.lpxz.transformer.Chocalate: void countEdges(java.lang.String,java.lang.String)>("goto [?= return]", "return");
+        goto label1;
+
+     label0:
+        staticinvoke <hk.ust.lpxz.transformer.Chocalate: void countEdges(java.lang.String,java.lang.String)>("if $i2 > b1 goto i4 = b1 + 1", "i4 = b1 + 1");
+        i4 = b1 + 1;
+
+     label1:
+        staticinvoke <hk.ust.lpxz.transformer.Chocalate: void countEdges(java.lang.String,java.lang.String)>("i4 = b1 + 1", "return");
+        staticinvoke <hk.ust.lpxz.transformer.Chocalate: void reportEdges()>();
+        return;
+    }
+

@@ -1,0 +1,21 @@
+SocketClientFactory.java
+
+notifyUse()
+
+701: decIdleCount();// freecount
+
+702: idleList.remove(); // next, prev
+
+
+clientCnnectionFinished()
+
+636: remove();// next prev
+
+649: incFreeCount(); // freecount
+
+AV on frreecount,
+AsetV on [freecout,prev]
+AsetV on [freecount,next]
+AsetV on [prev, next]
+So, the results must be 701+702+636+649<=1
+

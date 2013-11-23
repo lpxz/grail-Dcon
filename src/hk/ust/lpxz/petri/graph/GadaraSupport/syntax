@@ -1,0 +1,52 @@
+#is the comment line.
+# type                    name    			{ attribute list} 
+Place                     placename 		{stmt=identifier, token=num, enclosingPM=pmname};
+Transition                transname 		{controllable=true/false, observable=true/false};
+Arc 					  arcname 			{weight=num};
+PetriMethod 			  pmname 			{methodsig="sig",  entry=placename1,  exit=placename2};
+Violation 			      vname 				{pplace=placename1, cplace=placename1, rplace=placename3};
+PetriCS 				  pcsname				{resource=placename1, places={placename2, placename3...}};
+# the links between places, arcs and transitions:
+placename1-> arcname1->transname1;
+transname2-> arcname2-> placename2;
+
+
+
+
+
+
+Note:
+1) we have several types of places: 
+PlaceCommonLocal     // normal place node modeling the statement. 
+PlaceMethodEntry     // an artificial place for modeling the entry of a method, its stmt attribute is empty
+PlaceMethodExit      // an artificial place for modeling the method exit. All exits (returns) of a method connect to it. 
+PlaceResource        // a place modeling the lock, its enclosingPM is empty.
+PlaceControl		 // a place modeling the added control place
+We need to substitute the type column of place into any of the five types. 
+
+The place contains an attribute enclosingPM, telling what PetriMethod it is in.
+
+2) PetriMethod is a unit of the Petri net graph. Essentially, it models a context-sensitive clone of a method. 
+It helps managing the context information and inter-procedural invocations.
+for its attributes, methodsig is used  (by soot or llvm) to identify the method. entry is the PlaceMethodEntry place. 
+
+3) Given a violation, (p,c,r), it means that, p and c are statements executed by a thread in one atomic region, but interleaved non-serializabily 
+by a remote thread executing r statement.
+"pplace", "cplace" and "rplace" are the places modeling the statements p, c and r.
+
+4) PetriCS is the Petri-net-version of CS (critical section). By Petri-net-version, we mean it is context-sensitive.
+"resource" attribute is the PlaceResource place. "places" attribute tells what places are included.
+
+5) Name convention: 
+placename = "p" + place_id, for example, p14
+transname ="t" + trans_id
+arcname ="a" + arc_id
+pmname ="pm"+ pm_id
+vname="v" + v_id
+pcsname ="pcs" + pcs_id
+
+6) I use methodsig:jimplecode as the identifier of a stmt. This is special for java and soot. In llvm, different identifiers may be used.
+
+
+
+

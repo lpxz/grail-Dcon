@@ -1,0 +1,40 @@
+ResourceEventQueue.java
+getNextEvent()
+80: queue=
+
+86: queue=
+
+87: last=
+
+
+sendEvent()
+39: queue=
+
+40: last=
+
+52: event=
+
+62: last=
+
+
+FramedResource.java
+setValue()
+
+571: setValue(); // may access event, last, queue
+ 
+574: postStructureChange(); // may access event, last, queue
+
+
+
+
+The av in this example: 571  39  574 queue
+                        571  40  574  last
+                        571  42  574  event
+                        
+                        
+                        
+
+
+
+
+

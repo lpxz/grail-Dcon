@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="clean" name="pecan-monitor">
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
+        <classpath>
+            <pathelement location="/home/lpxz/eclipse/workspace/soot24/lib/ant-contrib.jar"/>
+        </classpath>
+    </taskdef>
+	<loadproperties srcFile="properties"/>
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../"/>
+	<import file="path_def.xml" />
+	
+	<target name="Simple">		
+		<ant   target="measure_Simple"/>
+	</target>
+
+							
+
+        <target name="clean">
+            <!--delete dir="bin"/-->
+            <delete includeemptydirs="true">
+            	    <fileset dir="tmp" includes="**/trace*"/>
+            </delete>
+        </target>
+
+    
+
+   
+
+
+
+        	 	
+<macrodef name="measureit">
+	    <attribute name="projectname"/>
+	    <sequential>
+	    	<!--monitor-->
+	    	<!--echo message="the original run"/>
+	        <java classname="edu.hkust.clap.OrigMain" failonerror="true" fork="yes">
+ 	      <arg line="@{projectname}"/>    		        	
+           <jvmarg line="-noverify -Xmx2g"/>  
+	        	<classpath>	
+	        		 <pathelement path="${benchmarks.location}/bin"/>  	        		 
+	                  <path refid="@{projectname}.classpath"/>
+	        	 </classpath>   	             
+	       </java-->	 
+	    	
+	    	    	
+	    	
+			<echo message="load instrumented classes from folder: ${dcon.location}/output/@{projectname}"/>
+	    	<echo message="orig main"/>
+			        <java classname="edu.hkust.clap.OrigMain" failonerror="true" fork="yes">
+		 	      <arg line="@{projectname}"/>    		        	
+	               <jvmarg line="-noverify -Xmx2g"/>  
+			        	<classpath>	
+			        		 <pathelement path="${benchmarks.location}/bin"/>  
+			        		  <pathelement path="${dcon.location}/output/@{projectname}"/>  
+			                  <path refid="@{projectname}.classpath"/>
+			        	 </classpath>   
+			             <!--must before it, otherwise, the Monitor in monitoring project will not take effect-->
+			   </java>	  
+	    	<echo message="afix main"/>
+	    				        <java classname="edu.hkust.clap.AfixMain" failonerror="true" fork="yes">
+	    			 	      <arg line="@{projectname}"/>    		        	
+	    		               <jvmarg line="-noverify -Xmx2g"/>  
+	    				        	<classpath>	
+	    				        		 <pathelement path="${benchmarks.location}/bin"/>  
+	    				        		  <pathelement path="${dcon.location}/output/@{projectname}"/>  
+	    				                  <path refid="@{projectname}.classpath"/>
+	    				        	 </classpath>   
+	    				             <!--must before it, otherwise, the Monitor in monitoring project will not take effect-->
+	    				   </java>	  
+			        	
+	    	<echo message="axis main"/>
+	    				        <java classname="edu.hkust.clap.AxisMain" failonerror="true" fork="yes">
+	    			 	      <arg line="@{projectname}"/>    		        	
+	    		               <jvmarg line="-noverify -Xmx2g"/>  
+	    				        	<classpath>	
+	    				        		 <pathelement path="${benchmarks.location}/bin"/>  
+	    				        		  <pathelement path="${dcon.location}/output/@{projectname}"/>  
+	    				                  <path refid="@{projectname}.classpath"/>
+	    				        	 </classpath>   
+	    				             <!--must before it, otherwise, the Monitor in monitoring project will not take effect-->
+	    				   </java>	  
+	    	
+	    	<echo message="grail main"/>
+	    				        <java classname="edu.hkust.clap.GrailMain" failonerror="true" fork="yes">
+	    			 	      <arg line="@{projectname}"/>    		        	
+	    		               <jvmarg line="-noverify -Xmx2g"/>  
+	    				        	<classpath>	
+	    				        		 <pathelement path="${benchmarks.location}/bin"/>  
+	    				        		  <pathelement path="${dcon.location}/output/@{projectname}"/>  
+	    				                  <path refid="@{projectname}.classpath"/>
+	    				        	 </classpath>   
+	    				             <!--must before it, otherwise, the Monitor in monitoring project will not take effect-->
+	    				   </java>	  	    	
+	    </sequential>
+	</macrodef>
+	
+<target name ="measure_Simple">		
+	<measureit projectname="Specjbb"/>
+</target>
+	
+	<target name ="measure_API_all">		
+		<measureit projectname="Avrora"/>
+			 <measureit projectname="Bayes"/>
+			<measureit projectname="Cache4j"/>
+			 <measureit projectname="Derby"/>
+			 <measureit projectname="Ftpserver"/>
+			 <measureit projectname="Hedc"/>
+			 <measureit projectname="Jigsaw"/>
+			<measureit projectname="Jspider"/>
+			 <measureit projectname="Laby"/>
+			 <measureit projectname="Lucene"/>
+			<measureit projectname="Mail"/>
+			<measureit projectname="mtrt"/>
+			<measureit projectname="Openjms"/>
+			<measureit projectname="Raytracer"/>
+			 <measureit projectname="Specjbb"/>
+			<measureit projectname="Tomcat"/>
+				<measureit projectname="Tuple"/>
+			 	<measureit projectname="Vacation"/>
+			 <measureit projectname="Weblech"/>
+	</target>
+
+	
+	
+</project>

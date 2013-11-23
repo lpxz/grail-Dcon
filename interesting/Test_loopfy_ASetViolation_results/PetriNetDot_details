@@ -1,0 +1,8 @@
+p2 ----> entermonitor r0
+p3 ----> <Test: int counter> = 10
+p4 ----> <Test: int counter> = 11
+p5 ----> exitmonitor r2
+p8 ----> entermonitor $r1
+p9 ----> <Test: int counter> = 22
+p10 ----> <Test: int counter> = 24
+p11 ----> exitmonitor r2

@@ -1,0 +1,12 @@
+=========controller0====
+it contains 30.0 tokens initially
+gives 20.0 tokens to T between r0 := @this: Test$3 and <Test: int xxx> = 31
+takes 20.0 tokens from T between <Test: int xxx> = 31 and return
+gives 10.0 tokens to T between entermonitor r0 and <Test: int counter> = 10
+takes 10.0 tokens from T between <Test: int counter> = 11 and exitmonitor r2
+gives 20.0 tokens to T between entermonitor $r1 and <Test: int xxx> = 22
+gives 10.0 tokens to T between <Test: int xxx> = 22 and <Test: int counter> = 20
+takes 10.0 tokens from T between <Test: int counter> = 20 and <Test: int xxx> = 24
+takes 20.0 tokens from T between <Test: int xxx> = 24 and exitmonitor r2
+==========================
+

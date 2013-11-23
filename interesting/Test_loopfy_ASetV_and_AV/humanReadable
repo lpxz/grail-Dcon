@@ -1,0 +1,12 @@
+=========controller0====
+it contains 30.0 tokens initially
+gives 10.0 tokens to T between entermonitor $r1 and <Test: int xxx> = 31
+takes 10.0 tokens from T between <Test: int xxx> = 35 and exitmonitor r2
+gives 20.0 tokens to T between entermonitor $r1 and <Test: int counter> = 22
+takes 20.0 tokens from T between <Test: int counter> = 24 and exitmonitor r2
+gives 20.0 tokens to T between entermonitor r0 and <Test: int counter> = 10
+gives 10.0 tokens to T between <Test: int counter> = 10 and <Test: int xxx> = 10
+takes 10.0 tokens from T between <Test: int xxx> = 10 and <Test: int counter> = 11
+takes 20.0 tokens from T between <Test: int counter> = 11 and exitmonitor r2
+==========================
+

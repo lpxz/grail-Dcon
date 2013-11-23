@@ -1,0 +1,9 @@
+p2 ----> entermonitor $r1
+p3 ----> staticinvoke <Test: void setValue()>()
+p4 ----> staticinvoke <Test: void postChange()>()
+p5 ----> exitmonitor r2
+p8 ----> entermonitor $r4
+p9 ----> <Test: int queue> = 10
+p10 ----> <Test: int event> = 12
+p11 ----> <Test: int last> = 13
+p12 ----> exitmonitor r2

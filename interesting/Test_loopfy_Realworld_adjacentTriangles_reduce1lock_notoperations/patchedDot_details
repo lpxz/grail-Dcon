@@ -1,0 +1,12 @@
+p2 ----> entermonitor $r1
+p3 ----> staticinvoke <Test: void setValue()>()
+p4 ----> staticinvoke <Test: void postChange()>()
+p5 ----> exitmonitor r2
+p8 ----> entermonitor $r1
+p9 ----> <Test: int last> = 21
+p10 ----> <Test: int event> = 22
+p11 ----> <Test: int last> = 23
+p12 ----> exitmonitor r2
+p15 ----> entermonitor $r4
+p16 ----> <Test: int last> = 12
+p17 ----> exitmonitor r2

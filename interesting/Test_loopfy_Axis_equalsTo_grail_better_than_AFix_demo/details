@@ -1,0 +1,42 @@
+NewStoreEntry.java
+  public synchronized Resource lock() throws InvalidResourceException {
+        synchronized (identifier) {
+            lockCount++;
+        }
+        if (entry == null) throw new InvalidResourceException(identifier, "This reference has been invalidated");
+ 61:       ResourceStore store = entry.getStore();
+ 62:       Resource resource = store.lookupResource(identifier);
+        if (debug) {
+            if (defs.get("context") == null) {
+                System.out.println("**** Context null for : " + identifier);
+            } else if (((ResourceContext) (defs.get("context"))).getServer() == null) {
+                System.out.println("**** Server null for " + identifier + "'s context");
+            }
+        }
+        if (resource == null) {
+ 71:           resource = store.loadResource(identifier, defs);
+        }
+        if (debug) {
+            System.out.println("[LOCK] locking [" + lockCount + "]: " + identifier);
+        }
+        return resource;
+    }
+    
+    
+ResourceStoreImpl.java    
+      public Resource lookupResource(String identifier) {
+  196:      loadResources();
+        markUsed();
+  198      ResourceIndex index = (ResourceIndex) resources.get(identifier);
+        return (((index == null) || (!index.initialized)) ? null : index.getResource());
+    }
+    
+    protected synchronized void loadResources() {
+   481      resources=...
+    }
+    
+    
+    
+    AV on resources: 196 481   198
+                      61  198 62
+    AV on next:       62   13   71 

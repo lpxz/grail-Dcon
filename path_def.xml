@@ -1,0 +1,463 @@
+<project>
+	<property name="workspace" value="/Users/charlesz/eclipse/workspace"/>
+	<property name="app.location" value="${workspace}/app"/>
+	<property name="log4j.location" value="${workspace}/log4j"/>
+	<property name="Jspider.location" value="${workspace}/jspider"/>
+
+	<property name="openjms.location" value="${workspace}/openjms"/>
+	<property name="Simple.location" value="${workspace}/simple"/>
+
+	<property name="derby.location" value="${workspace}/Derby1001"/>
+	<property name="tomcat.location" value="/Users/charlesz/eclipse/workspace/tomcat"/>
+	<property name="soot24.location" value="${workspace}/soot24"/>
+	<property name="pecanmonitor.location" value="${workspace}/pecan/pecan-monitor"/>
+	<property name="pecantrans.location" value="${workspace}/pecan/pecan-transformer"/>
+	<property name="dcon.location" value="${workspace}/Dcon"/>
+	<property name="benchmarks.location" value="${workspace}/Benchmarks"/>
+
+	
+	<property name="debuglevel" value="source,lines,vars"/>
+	<property name="target" value="1.6"/>
+	<property name="source" value="1.6"/>
+	<path id="JUnit 4.libraryclasspath">
+		<pathelement location="${ECLIPSE_HOME}/plugins/org.junit4_4.5.0.v20090423/junit.jar"/>
+		<pathelement location="${ECLIPSE_HOME}/plugins/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
+	</path>
+
+
+	<path id="Raytracer.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/raytracer/bin"/>
+	</path>
+
+
+	<path id="Hedc.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/hedc/tmpclasses"/>
+		<pathelement location="/Users/charlesz/eclipse/workspace/hedc/lib/servlet.jar"/>
+	</path>
+
+	<path id="Weblech.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/weblech/bin"/>
+		<pathelement location="/Users/charlesz/eclipse/workspace/weblech/lib/log4j-1.2.14.jar"/>
+	</path>
+
+
+	<path id="Simple.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/simple/bin"/>
+	</path>
+	
+	<path id="SimpleFixed.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/Dcon/output/Simple"/>
+	</path>
+
+
+	<path id="Cache4j.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/cache4j/bin"/>
+	</path>
+	
+	<path id="HashSet.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/JDKcode/bin"/>
+	</path>
+			
+	<path id="TreeSet.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/JDKcode/bin"/>
+	</path>
+			<path id="ArrayList.classpath">
+				<pathelement location="/Users/charlesz/eclipse/workspace/JDKcode/bin"/>
+			</path>
+	<path id="LinkedList.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/JDKcode/bin"/>
+	</path>
+	
+	<path id="MergeSort.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/MergeSort/bin"/>
+	</path>
+	
+	<path id="StringBuffer.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/StringBuffer/bin"/>
+	</path>
+			
+
+	<path id="Jspider.classpath">
+		<pathelement location="${Jspider.location}/bin"/>
+		<pathelement location="${Jspider.location}/lib/commons-logging.jar"/>
+		<pathelement location="${Jspider.location}/lib/junit.jar"/>
+		<pathelement location="${Jspider.location}/lib/log4j-1.2.8.jar"/>
+		<pathelement location="${Jspider.location}/lib/unittests.jar"/>
+		<pathelement location="${Jspider.location}/lib/velocity-dep-1.3.1.jar"/>
+	</path>
+
+
+	<path id="Specjbb.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/specjbb2005/bin"/>
+	</path>
+
+	<path id="Mail.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/mailpuccino/bin"/>
+	</path>
+
+	<path id="Tuple.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/tuplesoup-0.1.2-AJ/bin"/>
+	</path>
+
+
+
+
+
+	<path id="log4j.classpath">
+		<pathelement location="${log4j.location}/bin"/>
+		<pathelement location="${log4j.location}/lib/jms.jar"/>
+		<pathelement location="${log4j.location}/lib/mail.jar"/>
+		<pathelement location="${log4j.location}/lib/oro-2.0.8.jar"/>
+		<path refid="JUnit 4.libraryclasspath"/>
+	</path>
+
+
+	<!--does not work for rvm!!!path id="Openjms.classpath">
+		        <pathelement location="${openjms.location}/bin"/>
+		        <pathelement location="${openjms.location}/lib/jms-1.1.jar"/>
+		        <pathelement location="${openjms.location}/lib/commons-codec-1.3.jar"/>
+		        <pathelement location="${openjms.location}/lib/servlet.jar"/>
+		        <pathelement location="${openjms.location}/lib/derby-10.1.1.0.jar"/>
+		        <pathelement location="${openjms.location}/lib/castor-0.9.5.jar"/>
+		        <pathelement location="${openjms.location}/lib/spice-jndikit-1.2.jar"/>
+		        <pathelement location="${openjms.location}/lib/antlr-2.7.6.jar"/>
+		        <pathelement location="${openjms.location}/lib/oro-2.0.8.jar"/>
+		        <pathelement location="${openjms.location}/lib/commons-dbcp-1.2.1.jar"/>
+		        <pathelement location="${openjms.location}/lib/xml-apis-1.0.b2.jar"/>
+		        <pathelement location="${openjms.location}/lib/xerces-2.4.0.jar"/>
+		        <pathelement location="${openjms.location}/lib/commons-pool-1.2.jar"/>
+		        <pathelement location="${openjms.location}/lib/commons-collections-2.1.jar"/>
+		        <pathelement location="${openjms.location}/lib/commons-logging-1.0.4.jar"/>
+		        <path refid="log4j.classpath"/>
+		    </path-->
+	<property name="ftpserver.location" value="/Users/charlesz/eclipse/workspace/ftpserver"/>
+	<path id="Ftpserver.classpath">
+		<pathelement location="${ftpserver.location}/bin"/>
+		<pathelement location="${ftpserver.location}/lib/commons-logging-1.1.1.jar"/>
+		<pathelement location="${ftpserver.location}/lib/mina-core-2.0.4.jar"/>
+		<pathelement location="${ftpserver.location}/lib/slf4j-api-1.5.2.jar"/>
+		<pathelement location="${ftpserver.location}/lib/slf4j-log4j12-1.5.2.jar"/>
+		<pathelement location="${ftpserver.location}/lib/log4j-1.2.14.jar"/>
+		<pathelement location="${ftpserver.location}/lib/ftplet-api-1.0.6.jar"/>
+		<pathelement location="${ftpserver.location}/lib/commons-net-3.1.jar"/>
+		<pathelement location="${ftpserver.location}/lib/spring-beans-2.5.5.jar"/>
+		<pathelement location="${ftpserver.location}/lib/spring-context-2.5.5.jar"/>
+		<pathelement location="${ftpserver.location}/lib/spring-core-2.5.5.jar"/>
+		<pathelement location="${ftpserver.location}/lib/spring-web-2.5.5.jar"/>
+		<pathelement location="${ftpserver.location}/lib/junit-4.10.jar"/>
+	</path>
+
+	<property name="weblech.location" value="/Users/charlesz/eclipse/workspace/weblech"/>
+	<path id="Weblech.classpath">
+		<pathelement location="${weblech.location}/bin"/>
+		<pathelement location="${weblech.location}/lib/log4j-1.2.14.jar"/>
+	</path>
+
+	<property name="jstamp.location" value="/Users/charlesz/eclipse/workspace/jstamp"/>
+	<path id="Bayes.classpath">
+		<pathelement location="${jstamp.location}/bin"/>
+
+	</path>
+
+	<path id="Vacation.classpath">
+		<pathelement location="${jstamp.location}/bin"/>
+
+	</path>
+
+	<path id="Laby.classpath">
+		<pathelement location="${jstamp.location}/bin"/>
+
+	</path>
+
+	<property name="jigsaw.location" value="/Users/charlesz/eclipse/workspace/jigsaw"/>
+	<path id="Jigsaw.classpath">
+		<pathelement location="${jigsaw.location}/bin"/>
+		<pathelement location="${jigsaw.location}/classes/jakarta-oro-2.0.8.jar"/>
+		<pathelement location="${jigsaw.location}/classes/sax.jar"/>
+		<pathelement location="${jigsaw.location}/classes/servlet.jar"/>
+		<pathelement location="${jigsaw.location}/classes/Tidy.jar"/>
+		<pathelement location="${jigsaw.location}/classes/xerces.jar"/>
+		<pathelement location="${jigsaw.location}/classes/xp.jar"/>
+		<pathelement location="${jigsaw.location}/classes/tools.jar"/>
+	</path>
+
+
+	<path id="Derby.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/derby-10.3.2.1/build"/>
+		<pathelement location="/Users/charlesz/pool/jdk1.6.0_13/jre/lib/jsse.jar"/>
+		<pathelement location="/Users/charlesz/pool/jdk1.6.0_13/jre/lib/jce.jar"/>
+
+		<pathelement location="/Users/charlesz/eclipse/workspace/derby-10.3.2.1/lib/commons-io-1.1.jar"/>
+		<pathelement location="/Users/charlesz/eclipse/workspace/derby-10.3.2.1/lib/commons-logging-1.0.4.jar"/>
+		<pathelement location="/Users/charlesz/eclipse/workspace/derby-10.3.2.1/lib/serializer-2.7.0.jar"/>
+		<pathelement location="/Users/charlesz/eclipse/workspace/derby-10.3.2.1/lib/xalan-2.7.0.jar"/>
+		<pathelement location="/Users/charlesz/eclipse/workspace/derby-10.3.2.1/lib/xercesImpl-2.7.1.jar"/>
+
+	</path>
+
+
+	<path id="Tomcat.classpath">
+		<pathelement location="${tomcat.location}/bin"/>
+		<pathelement location="${tomcat.location}/lib/com.springsource.org.apache.tools.ant.launch-1.7.1.jar"/>
+		<pathelement location="${tomcat.location}/lib/commons-codec-1.3.jar"/>
+		<pathelement location="${tomcat.location}/lib/commons-logging-1.1.1.jar"/>
+		<pathelement location="${tomcat.location}/lib/httpclient-4.0.1.jar"/>
+		<pathelement location="${tomcat.location}/lib/httpcore-4.0-beta3.jar"/>
+		<pathelement location="${tomcat.location}/lib/httpmime-4.0.1.jar"/>
+		<pathelement location="${tomcat.location}/lib/tools.jar"/>
+		<pathelement location="${tomcat.location}/lib/ant-1.7.1.jar"/>
+		<pathelement location="/Users/charlesz/pool/jdk1.6.0_13/jre/lib/jsse.jar"/>
+	</path>
+
+
+	<property name="openjms.location" value="/Users/charlesz/eclipse/workspace/openjms"/>
+		<path id="Openjms.classpath">
+			<pathelement location="${openjms.location}/bin"/>
+			<pathelement location="${openjms.location}/lib/jms-1.1.jar"/>
+			<pathelement location="${openjms.location}/lib/commons-codec-1.3.jar"/>
+			<pathelement location="${openjms.location}/lib/servlet.jar"/>
+			<pathelement location="${openjms.location}/lib/derby-10.1.1.0.jar"/>
+			<pathelement location="${openjms.location}/lib/castor-0.9.5.jar"/>
+			<pathelement location="${openjms.location}/lib/spice-jndikit-1.2.jar"/>
+			<pathelement location="${openjms.location}/lib/antlr-2.7.6.jar"/>
+			<pathelement location="${openjms.location}/lib/oro-2.0.8.jar"/>
+			<pathelement location="${openjms.location}/lib/commons-dbcp-1.2.1.jar"/>
+			<pathelement location="${openjms.location}/lib/xml-apis-1.0.b2.jar"/>
+			<pathelement location="${openjms.location}/lib/xerces-2.4.0.jar"/>
+			<pathelement location="${openjms.location}/lib/commons-pool-1.2.jar"/>
+			<pathelement location="${openjms.location}/lib/commons-collections-2.1.jar"/>
+			<pathelement location="${openjms.location}/lib/commons-logging-1.0.4.jar"/>
+			<pathelement location="${openjms.location}/lib/log4j-1.2.14.jar"/>
+		</path>
+
+	<path id="Avrora.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/avrora/bin"/>
+		<pathelement location="/Users/charlesz/eclipse/workspace/avrora/lib/commons-cli-1.1.jar"/>
+	</path>
+
+
+	<path id="Lucene.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/lucene/bin"/>
+		<pathelement location="/Users/charlesz/eclipse/workspace/lucene/lib/junit-3.8.2.jar"/>
+		<pathelement location="/Users/charlesz/eclipse/workspace/lucene/lib/commons-cli-1.1.jar"/>
+		<pathelement location="/Users/charlesz/eclipse/workspace/lucene/lib/servlet-api-2.4.jar"/>
+	</path>
+	
+	<path id="LuceneSearch.classpath">
+		<pathelement location="/Users/charlesz/eclipse/workspace/lucene/bin"/>
+		<pathelement location="/Users/charlesz/eclipse/workspace/lucene/lib/junit-3.8.2.jar"/>
+		<pathelement location="/Users/charlesz/eclipse/workspace/lucene/lib/commons-cli-1.1.jar"/>
+		<pathelement location="/Users/charlesz/eclipse/workspace/lucene/lib/servlet-api-2.4.jar"/>
+	</path>
+			
+			<path id="LuceneIndex.classpath">
+				<pathelement location="/Users/charlesz/eclipse/workspace/lucene/bin"/>
+				<pathelement location="/Users/charlesz/eclipse/workspace/lucene/lib/junit-3.8.2.jar"/>
+				<pathelement location="/Users/charlesz/eclipse/workspace/lucene/lib/commons-cli-1.1.jar"/>
+				<pathelement location="/Users/charlesz/eclipse/workspace/lucene/lib/servlet-api-2.4.jar"/>
+			</path>
+
+	<property name="bayes.location" value="${workspace}/jstamp-AJ"/>
+	<path id="bayes.classpath">
+		<pathelement location="${bayes.location}/bin"/>
+	</path>
+
+
+
+
+
+
+	<path id="soot24.classpath">
+		<!--path refid="openjms.classpath"/-->
+		<pathelement location="${soot24.location}/classes"/>
+		<pathelement location="${soot24.location}/lib/jasminclasses-2.3.0.jar"/>
+		<pathelement location="${soot24.location}/lib/jedd-runtime.jar"/>
+		<pathelement location="${soot24.location}/lib/jedd-translator.jar"/>
+		<pathelement location="${soot24.location}/lib/polyglot-1.3.3.jar"/>
+		<pathelement location="${soot24.location}/lib/svnant.jar"/>
+		<pathelement location="${soot24.location}/lib/svnClientAdapter.jar"/>
+		<pathelement location="${soot24.location}/lib/TGGraphLayout.jar"/>
+		<pathelement location="${soot24.location}/lib/xmlunit1.0.jar"/>
+		<pathelement location="${soot24.location}/lib/log4j-1.2.14.jar"/>
+
+		<pathelement location="${soot24.location}/lib/trove.jar"/>
+		<pathelement location="${soot24.location}/lib/jboss-serialization.jar"/>
+		<pathelement location="${soot24.location}/lib/jboss-common-4.0.2.jar"/>
+		<pathelement location="${soot24.location}/lib/junit-4.4.jar"/>
+		<pathelement location="${soot24.location}/javabdd_lib/javabdd_0.6.jar"/>
+		<pathelement location="${soot24.location}/lib/ant-antlr.jar"/>
+		<pathelement location="${soot24.location}/lib/ant-apache-bcel.jar"/>
+		<pathelement location="${soot24.location}/lib/ant-testutil.jar"/>
+		<pathelement location="${soot24.location}/lib/ant.jar"/>
+		<pathelement location="${soot24.location}/lib/coffer.jar"/>
+		<pathelement location="${soot24.location}/lib/java_cup.jar"/>
+		<pathelement location="${soot24.location}/lib/JFlex.jar"/>
+		<pathelement location="${soot24.location}/lib/junit-4.8.1.jar"/>
+		<pathelement location="${soot24.location}/lib/pao.jar"/>
+		<pathelement location="${soot24.location}/lib/polyglot.jar"/>
+		<pathelement location="${soot24.location}/lib/pth.jar"/>
+		<pathelement location="${soot24.location}/lib/xercesImpl.jar"/>
+		<pathelement location="${soot24.location}/lib/xml-apis.jar"/>
+		<pathelement location="${soot24.location}/lib/ant-contrib.jar"/>
+		<pathelement location="${soot24.location}/javabdd_lib/sablejbdd_real.jar"/>
+		<pathelement location="${soot24.location}/lib/pia.jar"/>
+		<pathelement location="${soot24.location}/lib/poa.jar"/>
+
+	</path>
+
+	<path id="pecan-transformer.classpath">
+		<pathelement location="${pecantrans.location}/bin"/>
+		<pathelement location="${pecantrans.location}/lib/asm-3.1.jar"/>
+		<pathelement location="${pecantrans.location}/lib/coffer.jar"/>
+		<pathelement location="${pecantrans.location}/lib/jasmin-2.3.0.jar"/>
+		<pathelement location="${pecantrans.location}/lib/java_cup.jar"/>
+		<pathelement location="${pecantrans.location}/lib/JFlex.jar"/>
+		<pathelement location="${pecantrans.location}/lib/jsr308-checkers-0.3.jar"/>
+		<pathelement location="${pecantrans.location}/lib/junit-4.3.1.jar"/>
+		<pathelement location="${pecantrans.location}/lib/pao.jar"/>
+		<pathelement location="${pecantrans.location}/lib/polyglot.jar"/>
+		<pathelement location="${pecantrans.location}/lib/pth.jar"/>
+		<pathelement location="${pecantrans.location}/lib/servlet.jar"/>
+		<pathelement location="${pecantrans.location}/lib/xalan-2.6.0.jar"/>
+		<pathelement location="${pecantrans.location}/lib/xalan-benchmark.jar"/>
+		<pathelement location="${pecantrans.location}/lib/xalan.jar"/>
+		<pathelement location="${pecantrans.location}/lib/pecan-instrumentor.jar"/>
+		<path refid="soot24.classpath"/>
+	</path>
+
+	<path id="pecan-monitor.classpath">
+
+		<pathelement path="${pecanmonitor.location}/bin"/>
+		<path refid="soot24.classpath"/>
+		<pathelement location="${pecanmonitor.location}/lib/xstream-1.3.1.jar"/>
+		<pathelement location="${pecanmonitor.location}/lib/xpp3_min-1.1.3.4.O.jar"/>
+		<pathelement location="${pecanmonitor.location}/lib/tools.jar"/>
+
+
+		<!--path refid="derby-10.3.2.1.classpath"/-->
+		<!-- I do not like openjms.derby.jar or other project's derby.jar.   path refid="openjms.classpath"/-->
+
+
+		<!--the castor lib would complian if it can not find the config for each jar file, our transformation discard the config for each jar file!-->
+	</path>
+
+	<path id="Dcon.classpath">
+		<pathelement location="bin"/>
+		<pathelement location="lib/antlrworks-1.4.3.jar"/>
+		<pathelement location="lib/args4j-2.0.10.jar"/>
+		<pathelement location="lib/commons-io-1.4.jar"/>
+		<pathelement location="lib/deuceAgent.jar"/>
+		<pathelement location="lib/javailp.jar"/>
+		<pathelement location="lib/jgraph.jar"/>
+		<pathelement location="lib/jsr308-checkers-0.3.jar"/>
+		<pathelement location="lib/junit-4.3.1.jar"/>
+		<pathelement location="lib/l2fprod-common-all.jar"/>
+		<pathelement location="lib/liblpsolve55.so"/>
+		<pathelement location="lib/liblpsolve55j.so"/>
+		<pathelement location="lib/lpsolve55j.jar"/>
+		<pathelement location="lib/xpp3_min-1.1.3.4.O.jar"/>
+		<pathelement location="lib/xstream-1.3.1.jar"/>
+		<pathelement location="lib/jgnuplot-0.3.jar"/>
+		<pathelement location="lib/asm-3.3.1.jar"/>
+		<pathelement location="lib/asm-commons-3.3.1.jar"/>
+		<pathelement location="lib/commons-lang3-3.1.jar"/>		
+		<path refid="soot24.classpath"/>
+		<path refid="pecan-monitor.classpath"/>
+	</path>
+
+	<!--jar version: -->
+	<path id="soot24_jar.classpath">
+		<!--path refid="openjms.classpath"/-->
+		<pathelement location="./soot24/soot24.jar"/>
+		<pathelement location="./soot24/jasminclasses-2.3.0.jar"/>
+		<pathelement location="./soot24/jedd-runtime.jar"/>
+		<pathelement location="./soot24/jedd-translator.jar"/>
+		
+		<pathelement location="./soot24/log4j-1.2.14.jar"/>
+		<pathelement location="./soot24/junit-4.4.jar"/>
+		<pathelement location="./soot24/javabdd_0.6.jar"/>
+		
+		
+		<pathelement location="./soot24/java_cup.jar"/>
+		<pathelement location="./soot24/JFlex.jar"/>
+		
+		<pathelement location="./soot24/polyglot.jar"/>
+
+
+	</path>
+
+	<path id="pecan-transformer_jar.classpath">
+		<pathelement location="./transformer/transformer.jar"/>
+		<pathelement location="./transformer/asm-3.1.jar"/>
+		<pathelement location="./transformer/coffer.jar"/>
+		<pathelement location="./transformer/jasmin-2.3.0.jar"/>
+		<pathelement location="./transformer/java_cup.jar"/>
+		<pathelement location="./transformer/JFlex.jar"/>
+		<pathelement location="./transformer/jsr308-checkers-0.3.jar"/>
+		<pathelement location="./transformer/junit-4.3.1.jar"/>
+		<pathelement location="./transformer/pao.jar"/>
+		<pathelement location="./transformer/polyglot.jar"/>
+		<pathelement location="./transformer/pth.jar"/>
+		<pathelement location="./transformer/servlet.jar"/>
+		<pathelement location="./transformer/xalan-2.6.0.jar"/>
+		<pathelement location="./transformer/xalan-benchmark.jar"/>
+		<pathelement location="./transformer/xalan.jar"/>
+		<pathelement location="./transformer/pecan-instrumentor.jar"/>
+		<!--path refid="soot24_jar.classpath"/-->
+	</path>
+	
+	<path id="pecan-monitor_jar_core.classpath">
+			<pathelement path="./monitor/monitor.jar"/>
+			
+			<!--the castor lib would complian if it can not find the config for each jar file, our transformation discard the config for each jar file!-->
+		</path>
+	<path id="pecan-monitor_jar_notcore.classpath">
+		<path refid="soot24_jar.classpath"/>
+		<pathelement location="./monitor/xstream-1.3.1.jar"/>
+		<pathelement location="./monitor/xpp3_min-1.1.3.4.O.jar"/>
+		<pathelement location="./monitor/tools.jar"/>
+			
+			<!--the castor lib would complian if it can not find the config for each jar file, our transformation discard the config for each jar file!-->
+		</path>
+
+	<path id="pecan-monitor_jar.classpath">
+		<pathelement path="./monitor/monitor.jar"/>
+		<path refid="soot24_jar.classpath"/>
+		<pathelement location="./monitor/xstream-1.3.1.jar"/>
+		<pathelement location="./monitor/xpp3_min-1.1.3.4.O.jar"/>
+		<pathelement location="./monitor/tools.jar"/>
+
+		<!--path refid="derby-10.3.2.1.classpath"/-->
+		<!-- I do not like openjms.derby.jar or other project's derby.jar.   path refid="openjms.classpath"/-->
+
+
+		<!--the castor lib would complian if it can not find the config for each jar file, our transformation discard the config for each jar file!-->
+	</path>
+
+	<path id="Dcon_jar.classpath">
+		<pathelement location="bin"/>
+		<pathelement location="lib/antlrworks-1.4.3.jar"/>
+		<pathelement location="lib/args4j-2.0.10.jar"/>
+		<pathelement location="lib/commons-io-1.4.jar"/>
+		<pathelement location="lib/deuceAgent.jar"/>
+		<pathelement location="lib/javailp.jar"/>
+		<pathelement location="lib/jgraph.jar"/>
+		<pathelement location="lib/jsr308-checkers-0.3.jar"/>
+		<pathelement location="lib/junit-4.3.1.jar"/>
+		<pathelement location="lib/l2fprod-common-all.jar"/>
+		<pathelement location="lib/liblpsolve55.so"/>
+		<pathelement location="lib/liblpsolve55j.so"/>
+		<pathelement location="lib/lpsolve55j.jar"/>
+		<pathelement location="lib/xpp3_min-1.1.3.4.O.jar"/>
+		<pathelement location="lib/xstream-1.3.1.jar"/>
+		<pathelement location="lib/jgnuplot-0.3.jar"/>
+		<pathelement location="lib/asm-3.3.1.jar"/>
+		<pathelement location="lib/asm-commons-3.3.1.jar"/>
+		<path refid="soot24_jar.classpath"/>
+		<path refid="pecan-monitor_jar.classpath"/>
+	</path>
+
+	
+
+
+</project>

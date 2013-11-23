@@ -1,0 +1,255 @@
+PARSER_BEGIN(PNparser)
+
+
+package hk.ust.lpxz.petri.graph.GadaraSupport.parser;
+
+import java.io.StringReader;
+import java.io.Reader;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class PNparser {
+
+ 
+   public static List list ;
+    public PNparser(String s) 
+    {
+        this((Reader)(new StringReader(s))); 
+        list = new  ArrayList();
+    }
+    
+  
+    public static void main(String args[])
+    {
+        try
+        {       PNparser parser = new PNparser(new java.io.FileInputStream(args[0]));
+                parser.parse();
+                System.out.println(list.size());
+        }
+        catch(Exception e)
+        {
+                e.printStackTrace();
+        }
+    }
+}
+
+
+PARSER_END(PNparser) 
+
+/**  And now, the actual parsing specifications...... */
+
+/** Skip these characters, they are considered "white space" **/
+SKIP :                              
+{
+    " "
+    | "\t"
+    | "\r"
+    | "\n"
+
+}
+
+
+TOKEN: /*RESERVED TOKENS FOR UQL */
+{    
+    <EQUALS:  "="> //: WithinATTR
+   | < ATTRSEP: ",">
+   |  < DECLSEP: ";">
+   |  < RBRACE: "}">
+   | < LBRACE: "{">  
+   | < PLACECOMMON: "PlaceCommonLocal" >
+   | < PLACEENTRY: "PlaceMethodEntry">
+   | < PLACEEXIT:"PlaceMethodExit">
+   | < PLACERESOURCE:"PlaceResource">
+   | <PLACECONTROL: "PlaceControl" >
+   | < TRANSITION:"Transition">
+   | < ARC:"Arc">
+   | < PETRIMETHOD:"PetriMethod">
+   | < PETRICS:"PetriCS">
+   | < VIOLATION:"Violation">
+   | < ARROW: "->">
+   | < STMTATTR: "stmt">
+   | < TOKENATTR: "token">
+   | < ENCLOSINGMATTR: "enclosingPM">
+   | < CONTROLLABLEATTR: "controllable">
+   | < OBSERVABLEATTR: "observable">
+   | < WEIGHTATTR:"weight">
+   | < METHODSIGATTR: "methodsig">
+   | < ENTRYATTR: "entry">
+   | < EXITATTR: "exit">
+   | < PPLACEATTR:"pplace">
+   | < CPLACEATTR:"cplace">
+   | < RPLACEATTR:"rplace">
+   | < RESOURCEATTR:"resource">
+   | < PLACESATTR:"places">
+   | < TRUE: "true">
+   | < FALSE: "false">
+   
+   
+}
+
+
+
+
+
+TOKEN : /* the keywords and comparators - QUOTEDVALUE accounts for escaped quotes as well */
+{
+  //  ,"a"-"z"
+
+   <VARNAME: (["a"-"z","A"-"Z"])+ (["0"-"9"])+ >|   
+   <STMTSIG: "<" (["a"-"z","A"-"Z", "0"-"9", "<", ">", "$", ":", "@", "(", ")", "=", " ", ".", "[", "]", "?"])+  > // starts with <
+ | < INTEGER: (["0"-"9"])+>
+   
+   
+   
+
+}
+
+
+/** 
+ *  Top level
+ */
+void parse() :
+{
+}
+{
+    whole()   <EOF>       // a query followed by optional sort
+}
+
+/**
+ * An expression is defined to be a queryTerm followed by zero or more
+ * query terms joined by either an AND or an OR.   If two query terms are joined with 
+ * AND then both conditions must be met.  If two query terms are joined with an OR, then
+ * one of the two conditions must be met.  
+ */
+void whole() :
+{
+}
+{
+   varDecList()  linkDecList()        
+}
+
+void  varDecList():
+{
+}
+{
+   ( varDec() <DECLSEP>)+
+}
+
+void linkDecList():
+{
+}
+{
+   ( linkDec() <DECLSEP>)+
+}
+
+void varDec():
+{
+  Token t;
+}
+{
+    vartype() t=<VARNAME> <LBRACE> attrilist()  < RBRACE>
+    {
+      System.out.println(t.image);
+    }
+   
+}
+
+void vartype():
+{
+  Token t;
+}
+{
+    <PLACECOMMON>|t= < PLACEENTRY>
+    {
+    System.out.println(t.image);}|< PLACEEXIT> |< PLACERESOURCE>| < PLACECONTROL>
+  | < TRANSITION>|< ARC>|< PETRIMETHOD>|< PETRICS>|< VIOLATION>
+}
+
+void attrilist():
+{
+}
+{
+    attriDec() (< ATTRSEP> attriDec())*
+
+}
+
+
+void attriDec():
+{
+    
+}
+{
+  LOOKAHEAD(3)
+    <STMTATTR> < EQUALS> < STMTSIG>|
+ LOOKAHEAD(3)
+    <STMTATTR> < EQUALS> |
+    < TOKENATTR> < EQUALS> < INTEGER>|
+   LOOKAHEAD(3)  < ENCLOSINGMATTR>  < EQUALS>  < VARNAME>|  LOOKAHEAD(3) < ENCLOSINGMATTR>  < EQUALS> |
+    LOOKAHEAD(3) < CONTROLLABLEATTR>    < EQUALS> < TRUE> |  LOOKAHEAD(3)  < CONTROLLABLEATTR>    < EQUALS> < FALSE>
+  |  LOOKAHEAD(3)  < OBSERVABLEATTR>    < EQUALS> < TRUE>  |   LOOKAHEAD(3)< OBSERVABLEATTR>    < EQUALS> < FALSE>
+  | < WEIGHTATTR>  < EQUALS> < INTEGER> |
+  < METHODSIGATTR> < EQUALS> < STMTSIG>|
+  < ENTRYATTR>  < EQUALS> < VARNAME>|
+  < EXITATTR> < EQUALS>< VARNAME> |
+  < PPLACEATTR> < EQUALS>< VARNAME> |
+   < CPLACEATTR> < EQUALS>< VARNAME> |
+    < RPLACEATTR> < EQUALS>< VARNAME> |
+    < RESOURCEATTR>   < EQUALS>< VARNAME> |
+    < PLACESATTR>  < EQUALS>  < LBRACE> varbag()  < RBRACE>
+    
+  
+}
+    
+
+
+void varbag():
+{
+}
+{
+  < VARNAME> (< ATTRSEP> < VARNAME>)*
+}
+
+
+
+
+void linkDec():
+{
+}
+{
+  <VARNAME> <ARROW> <VARNAME> < ARROW > <VARNAME>
+}
+
+
+
+
+
+//List chain():
+//{List tmplist, list1, list2;}
+//{
+//  {
+//    tmplist=  new  ArrayList();
+//  }
+//     list1 =site()
+//     {
+//       tmplist.add(list1);
+//     }
+//  (<SITESEP> list2= site()
+//  {
+//        tmplist.add(list2);
+//  })*
+//  {
+//       return tmplist;
+//  }
+//}
+
+
+
+
+
+
+

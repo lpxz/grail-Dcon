@@ -1,0 +1,68 @@
+ ResourceEventQueue.java
+ 
+  public synchronized ResourceEvent getNextEvent() throws InterruptedException {
+        edu.hkust.clap.monitor.Monitor.loopBegin(772);
+while (queue == null) { 
+edu.hkust.clap.monitor.Monitor.loopInc(772);
+wait();} 
+edu.hkust.clap.monitor.Monitor.loopEnd(772);
+
+        QueueCell next = queue;
+a: b:        queue = queue.next;// different executions of this method.
+        if (queue == null) last = null;
+        return next.event;
+    }
+
+    
+    
+      public synchronized void sendEvent(ResourceEvent evt) {
+        if (debug) System.out.println("[QUEUE] : sendEvent " + evt.getID());
+        QueueCell ncell = new QueueCell(evt);
+        if (queue == null) {
+ c:           queue = ncell;
+            last = ncell;
+            notifyAll();
+        } else {
+            if ((ncell.id == Events.RESOURCE_MODIFIED) || (ncell.id == Events.FRAME_MODIFIED)) {
+                if (debug) System.out.println("[QUEUE] : remove old modified event");
+                QueueCell cell = queue;
+                edu.hkust.clap.monitor.Monitor.loopBegin(771);
+while (cell != null) { 
+edu.hkust.clap.monitor.Monitor.loopInc(771);
+{
+                    if ((cell.id == ncell.id) && (cell.event.getSource() == ncell.event.getSource())) {
+                        if (debug) System.out.println("[QUEUE] : Found one!");
+                        cell.event = ncell.event;
+                        break;
+                    }
+                    cell = cell.next;
+                }} 
+edu.hkust.clap.monitor.Monitor.loopEnd(771);
+
+                if (cell == null) {
+                    if (debug) System.out.println("[QUEUE] : add new event.");
+                    last.next = ncell;
+                    last = ncell;
+                }
+            } else {
+                last.next = ncell;
+                last = ncell;
+            }
+        }
+    }
+    
+    
+    
+       public synchronized void setValue(int idx, Object value) {
+d:        super.setValue(idx, value);
+        if (idx != ATTR_LAST_MODIFIED) {
+            postAttributeChangeEvent(idx, value);
+e:            postStructureChangedEvent(Events.RESOURCE_MODIFIED);
+        }
+    }
+  
+  
+  The AV: a c  b
+          d c e
+          the solution is similar to that case in details.
+            

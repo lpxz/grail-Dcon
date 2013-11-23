@@ -1,0 +1,12 @@
+p2 ----> entermonitor $r1
+p3 ----> <Test: int xxx> = 22
+p4 ----> <Test: int counter> = 20
+p5 ----> <Test: int xxx> = 24
+p6 ----> exitmonitor r2
+p9 ----> r0 := @this: Test$3
+p10 ----> <Test: int xxx> = 31
+p11 ----> return
+p14 ----> entermonitor r0
+p15 ----> <Test: int counter> = 10
+p16 ----> <Test: int counter> = 11
+p17 ----> exitmonitor r2

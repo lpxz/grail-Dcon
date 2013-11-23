@@ -1,0 +1,10 @@
+p2 ----> entermonitor $r4
+p3 ----> <Test: int event> = 12
+p4 ----> <Test: int event> = 12
+p5 ----> <Test: int last> = 13
+p6 ----> exitmonitor r2
+p9 ----> entermonitor $r1
+p10 ----> <Test: int event> = 22
+p11 ----> <Test: int last> = 21
+p12 ----> <Test: int last> = 23
+p13 ----> exitmonitor r2

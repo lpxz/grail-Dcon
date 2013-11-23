@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="debug" name="Dcon">
+	<property environment="env"/>
+	<property name="ECLIPSE_HOME" value="../../"/>
+
+	<loadproperties srcFile="properties"/>
+	<import file="path_def.xml"/>
+
+
+
+	<target name="init">
+		<mkdir dir="bin"/>
+		<copy includeemptydirs="false" todir="bin">
+			<fileset dir="src">
+				<exclude name="**/*.launch"/>
+				<exclude name="**/*.java"/>
+				<exclude name="AVfix/locking/CopyOfXedgesLocker.java"/>
+				<exclude name="AVfix/icse/fixing/ICSEJinFixing.java"/>
+				<exclude name="AVfix/icse/fixing/ICSENaiveSIngleLocks.java"/>
+				<exclude name="AVfix/icse/fixing/ICSEOriginal.java"/>
+				<exclude name="AVfix/icse/fixing/ICSEPengFixing.java"/>
+				<exclude name="AVfix/icse/fixing/Properties.java"/>
+			</fileset>
+		</copy>
+	</target>
+	<target name="clean">
+		<delete dir="bin"/>
+	</target>
+	<target depends="clean" name="cleanall">
+		<ant antfile="build.xml" dir="${log4j.location}" inheritAll="false" target="clean"/>
+		<ant antfile="build.xml" dir="${soot24.location}" inheritAll="false" target="clean"/>
+	</target>
+	<target depends="build-subprojects,build-project" name="build"/>
+	<target name="build-subprojects">
+		<!--ant antfile="build.xml" dir="${log4j.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant-->
+		<ant antfile="build.xml" dir="${soot24.location}" inheritAll="false" target="build-project">
+			<propertyset>
+				<propertyref name="build.compiler"/>
+			</propertyset>
+		</ant>
+	</target>
+	<target depends="init" name="build-project">
+		<echo message="${ant.project.name}: ${ant.file}"/>
+		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+			<src path="src"/>
+			<src path="graphviz"/>
+			<exclude name="AVfix/locking/CopyOfXedgesLocker.java"/>
+			<exclude name="AVfix/icse/fixing/ICSEJinFixing.java"/>
+			<exclude name="AVfix/icse/fixing/ICSENaiveSIngleLocks.java"/>
+			<exclude name="AVfix/icse/fixing/ICSEOriginal.java"/>
+			<exclude name="AVfix/icse/fixing/ICSEPengFixing.java"/>
+			<exclude name="AVfix/icse/fixing/Properties.java"/>
+			<classpath refid="Dcon.classpath"/>
+		</javac>
+	</target>
+	<target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+	<target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+		<copy todir="${ant.library.dir}">
+			<fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+		</copy>
+		<unzip dest="${ant.library.dir}">
+			<patternset includes="jdtCompilerAdapter.jar"/>
+			<fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+		</unzip>
+	</target>
+	<target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+		<property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+		<antcall target="build"/>
+	</target>
+
+
+
+	<target name="filterout">
+		<java classname="hk.ust.lpxz.fixing.FilterOut" failonerror="true" fork="yes">
+			<jvmarg line="-Xmx2g" />
+			<syspropertyset>
+				<propertyref builtin="all"/>
+			</syspropertyset>
+			<classpath refid="Dcon.classpath"/>
+			<classpath refid="${projectname}.classpath"/>
+			<!--should not moved before Dcon.cp-->
+			<classpath refid="pecan-monitor.classpath"/>
+		</java>
+	</target>
+
+
+
+	
+	
+	<target name="fixOnLoadingPN">
+		<echo message="fix on the loaded PN:" />
+		<java classname="hk.ust.lpxz.fixing.Fixer" failonerror="true" fork="yes">
+			<jvmarg line="-Xmx2g"/>
+			<arg value="${BugsToFixpara}"/>
+			<syspropertyset>
+				<propertyref builtin="all"/>
+			</syspropertyset>
+			<classpath refid="Dcon.classpath"/>
+			<classpath refid="${projectname}.classpath"/>
+			<!--${projectname}-->
+			<!--should not moved before Dcon.cp-->
+			<classpath refid="pecan-monitor.classpath"/>
+		</java>
+		<delete file="./pengSootOutput/AVfix/icse/fixing/lockwrapperStyle/lockMeta.class" failonerror="false"/>
+	</target>
+
+
+	
+	
+
+	<macrodef name="fixit">
+	    <attribute name="projectname"/>
+		  <attribute name="BugsToFix"/>
+		
+	    <sequential>
+	    	<!--filter out-->
+	    	<ant target="build"/>
+	    	<java classname="hk.ust.lpxz.fixing.FilterOut" failonerror="true" fork="yes">
+	    		<arg line="@{projectname}"/>     		
+	    		<jvmarg line="-Xmx2g" />
+	    				<syspropertyset>
+	    					<propertyref builtin="all"/>
+	    				</syspropertyset>
+	    				<classpath refid="Dcon.classpath"/>
+	    				<classpath refid="@{projectname}.classpath"/>
+	    				<!--should not moved before Dcon.cp-->
+	    				<classpath refid="pecan-monitor.classpath"/>
+	    			</java>
+	    	
+	    	<!--fix on PN-->
+	    	<echo message="fix on the loaded PN:" />
+	    			<java classname="hk.ust.lpxz.fixing.Fixer" failonerror="true" fork="yes">
+	    				<arg line="@{projectname} @{BugsToFix}"/>  
+	    				
+	    				<jvmarg line="-Xmx2g"/>
+	    				
+	    				<syspropertyset>
+	    					<propertyref builtin="all"/>
+	    				</syspropertyset>
+	    				<classpath refid="Dcon.classpath"/>
+	    				<classpath refid="@{projectname}.classpath"/>
+	    				<!--${projectname}-->
+	    				<!--should not moved before Dcon.cp-->
+	    				<classpath refid="pecan-monitor.classpath"/>
+	    			</java>
+	    			<delete file="./pengSootOutput/AVfix/icse/fixing/lockwrapperStyle/lockMeta.class" failonerror="false"/>
+	    	
+	    	
+	    </sequential>
+	</macrodef>
+	
+	
+	<target name ="debug">
+		<fixit projectname="HashSet" BugsToFix="100%"/>
+	</target>
+			
+			
+	
+	<target name="fix_Simple">
+		<fixit projectname="Simple" BugsToFix="100%"/>	
+		
+	</target>
+
+
+	<target name="fix_all">		
+		<fixit projectname="Bayes" BugsToFix="100%"/>
+		<fixit projectname="Cache4j" BugsToFix="100%"/>
+		<fixit projectname="Derby" BugsToFix="100%"/>
+		<fixit projectname="Ftpserver" BugsToFix="100%"/>
+		<fixit projectname="Hedc" BugsToFix="100%"/>
+		<fixit projectname="Jigsaw" BugsToFix="100%"/>
+		<fixit projectname="Jspider" BugsToFix="100%"/>
+		<fixit projectname="Laby" BugsToFix="100%"/>
+		<fixit projectname="Lucene" BugsToFix="100%"/>
+		<fixit projectname="Mail" BugsToFix="100%"/>
+		<fixit projectname="mtrt" BugsToFix="100%"/>
+		<fixit projectname="Openjms" BugsToFix="100%"/>
+		<fixit projectname="Raytracer" BugsToFix="100%"/>
+		<fixit projectname="Simple" BugsToFix="100%"/>	
+		<fixit projectname="Specjbb" BugsToFix="100%"/>
+		<fixit projectname="Tomcat" BugsToFix="100%"/>
+		<fixit projectname="Tuple" BugsToFix="100%"/>	
+				
+		<fixit projectname="Vacation" BugsToFix="100%"/>
+		<fixit projectname="Weblech" BugsToFix="100%"/>		
+		
+	</target>
+
+
+</project>

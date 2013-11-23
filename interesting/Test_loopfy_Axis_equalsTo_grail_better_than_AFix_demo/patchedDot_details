@@ -1,0 +1,11 @@
+p2 ----> entermonitor $r1
+p3 ----> <Test: int counter> = 22
+p4 ----> staticinvoke <Test: void callee()>()
+p5 ----> <Test: int xxx> = 23
+p6 ----> exitmonitor r2
+p9 ----> entermonitor $r1
+p10 ----> <Test: int xxx> = 35
+p11 ----> exitmonitor r2
+p14 ----> entermonitor $r4
+p15 ----> <Test: int counter> = 11
+p16 ----> exitmonitor r2

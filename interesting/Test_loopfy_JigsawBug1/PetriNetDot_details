@@ -1,0 +1,12 @@
+p2 ----> entermonitor r0
+p3 ----> <Test: int counter> = 10
+p4 ----> $i0 = <Test: int xxx>
+p5 ----> if $i0 <= 5 goto exitmonitor r2
+p6 ----> exitmonitor r2
+p7 ----> <Test: int counter> = 11
+p10 ----> entermonitor $r1
+p11 ----> <Test: int counter> = 22
+p12 ----> $i0 = <Test: int yyy>
+p13 ----> if $i0 <= 5 goto exitmonitor r2
+p14 ----> exitmonitor r2
+p15 ----> <Test: int counter> = 21

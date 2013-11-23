@@ -1,0 +1,41 @@
+ AttributeHolder.java
+ 
+ public synchronized void setValue(int idx, Object value) {
+        if ((idx < 0) || (idx >= attributes.length)) throw new IllegalAttributeAccess(this, idx);
+        Attribute attr = attributes[idx];
+        if (attr.checkValue(value)) {
+132:            values[idx] = value;
+        } else {
+            throw new IllegalAttributeAccess(this, attr, value);
+        }
+    }
+    
+    
+    Resource.java
+      public void initialize(Hashtable defs) {
+ 719:       Object values[] = ((this.values == null) ? new Object[attributes.length] : this.values);
+        edu.hkust.clap.monitor.Monitor.loopBegin(857);
+for (int i = 0; i < values.length; i++) { 
+edu.hkust.clap.monitor.Monitor.loopInc(857);
+{
+724:            String attrname = attributes[i].getName();
+            Object def = defs.get(attrname);
+            if (values[i] == null) {
+                if ((i == ATTR_HELP_URL) && (def != null) && (def instanceof String)) {
+                    values[i] = ((String) def).intern();
+                } else {
+                    values[i] = def;
+                }
+            }
+        }} 
+edu.hkust.clap.monitor.Monitor.loopEnd(857);
+
+ 736:       initialize(values);
+    }
+    
+    
+    AV on values: 719 132  736
+    AV on attributes:   129  724 130
+    The two variables do not form the atomic set!
+    
+    
